@@ -166,7 +166,7 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 
             // Part two is attachment
             messageBodyPart = new MimeBodyPart();
-            String filename = "Tickets Please "+nameGenrator+"";
+            String filename = "#"+nameGenrator+"";//directory in which you have to generate pdf of Ticket
             DataSource source = new FileDataSource(filename);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(filename);
