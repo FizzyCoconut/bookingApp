@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Tickets Please</title>
+<link rel="stylesheet" 
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+
+    .container .row{
+        background-color: rgba(255,255,255,0.58);
+        padding-bottom: 10px;
+       
+    }
+    h2{
+        text-align: center;
+    }
+    
+</style>
+
+<body>
+
+    <!-- Create HTML registration form -->
+    <div class="container">
+        <h2>Train Reservation Registration</h2>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <!-- success message -->
+                <div th:if="${param.success}">
+                  <div class="alert alert-info">You've successfully registered
+                        to our awesome app!</div>
+                </div>
+
+                <h1>Registration</h1>
+
+                <form th:action="@{/registration}" method="post" 
+                             th:object="${user}">
+                    <div class="form-group">
+                        <label class="control-label" for="firstName"> 
+                           First Name </label>
+                        <input id="firstName" class="form-control" 
+                                 th:field="*{name}" required
+                            autofocus="autofocus" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="email"> Email 
+                         </label> <input id="email" class="form-control"
+                            th:field="*{email_id}" required autofocus="autofocus" 
+                                />
+                    </div>
+                    
+                    
+
+                    <div class="form-group">
+                        <label class="control-label" for="password"> 
+                           Password </label> <input id="password"
+                            class="form-control" type="password" 
+                          th:field="*{password}" required
+                            autofocus="autofocus" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label" for="role"> 
+                           Role </label> <select id="role" th:field="*{role}" class="form-control form-control-lg">
+													<option value="USER">USER</option>
+													<option value="ADMIN">ADMIN</option>
+												</select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                          Register</button>
+                        <span>Already registered? <a href="/" 
+                  th:href="@{/login}">Login
+                                here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
